@@ -8,3 +8,4 @@ setTimeout(function(){
 modalCloseBtn.addEventListener('click', function(){
     modal.style.display = 'none'
 })
+
