@@ -13,17 +13,9 @@ modalCloseBtn.addEventListener('click', function(){
 
 consentForm.addEventListener('submit', function(e){
     e.preventDefault()
-
-/*   
-Challenge: 
-1. Inside the body of this event listener, 
-   create a const and set it equals to a new 
-   instance of FormData which takes in our HTML 
-   form element as a parameter.
-2. Log out the const (you should just get 
-   a FormData object).
-*/ 
     
+    const consentFormData = new FormData(consentForm)
+    const fullName = consentFormData.get('fullName')
     
     modalText.innerHTML = `
     <div class="modal-inner-loading">
@@ -36,15 +28,22 @@ Challenge:
         Making the sale...`
     }, 1500)
     
-    
+/*   
+Challenge: 
+1. Make the button that closes the modal disabled.
+2. Make that button become usable when the final 
+   modal message has been displayed to the user.
+*/ 
+
     setTimeout(function(){
         document.getElementById('modal-inner').innerHTML = `
-        <h2>Thanks you sucker! </h2>
+        <h2>Thanks <span class="modal-display-name">${fullName}</span>, you sucker! </h2>
         <p>We just sold the rights to your eternal soul.</p>
         <div class="idiot-gif">
             <img src="images/pirate.gif">
         </div>
     `
+    modalCloseBtn.disabled = false
     }, 3000)
   
 }) 
